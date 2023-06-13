@@ -1,0 +1,33 @@
+.speedDial{
+    position: fixed;
+    right: 3vmax;
+    top: 3vmax;
+}
+
+.speedDialIcon{
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+}
+
+@media  screen and (max-width:600px) {
+    .logoReactNavbar {
+        width: 155%!important;
+    
+    }
+    .nav1{
+        left:0%;
+        /* width: 1vmax; */
+        /* margin-left: 2vmax; */
+    } 
+    /* .nav2{
+        left:32%;
+    }
+    .nav3{
+        left:57%;
+    }
+    .nav4{
+        left:82%;
+    } */
+
+}
