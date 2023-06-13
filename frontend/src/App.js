@@ -72,7 +72,7 @@ function App() {
 
   }, []);
 
-  // window.addEventListener("contextmenu",(e)=>e.preventDefault()); // using this no one now do right-click and inspect ..basically right-click will not work in the site
+  // window.addEventListener("contextmenu",(e)=>e.preventDefault()); // using this no one can do right-click and inspect ..basically right-click will not work in the site
 
   return (
     <Router>
