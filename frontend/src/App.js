@@ -42,6 +42,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 
 
+
 function App() {
 
   const { isAuthenticated, user } = useSelector(state => state.user);
@@ -49,10 +50,15 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-  
-    const { data } = await axios.get("/api/v1/stripeapikey"); //getting Stripe Api Key from backend
+    try{
+      const { data } = await axios.get("/api/v1/stripeapikey"); //getting Stripe Api Key from backend
 
-    setStripeApiKey(data.stripeApiKey);
+      setStripeApiKey(data.stripeApiKey);
+    }catch(error){
+      console.log(error);
+    }
+  
+    
   }
 
   useEffect(() => {
@@ -64,10 +70,8 @@ function App() {
     });
 
     store.dispatch(loadUser());
-
-    if(isAuthenticated){
-      getStripeApiKey();
-    }
+    
+    getStripeApiKey();
     
 
   }, []);
