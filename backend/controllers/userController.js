@@ -73,15 +73,18 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
     // });
 
 
-    const options={
-        expires:new Date(0),
-        httpOnly:true
-    };
-    const val = null;
-    res.status(200).cookie('token', val, options).json({
-        success:true,
-        message:"Logged Out"
-    });
+    // const options={
+    //     expires:new Date(0),
+    //     httpOnly:true
+    // };
+    // const val = null;
+    // res.status(200).cookie('token', val, options).json({
+    //     success:true,
+    //     message:"Logged Out"
+    // });
+
+    res.status(200).clearCookie('token');
+    res.redirect('/');
 });
 
 
