@@ -30,6 +30,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 
 //Login User
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
+    
 
     const { email, password } = req.body;
 
@@ -61,9 +62,10 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 exports.logout = catchAsyncErrors(async (req, res, next) => {
 
     res.cookie("token", null, {
-        expires: new Date(0),
+        expire: new Date(Date.now()),
         httpOnly: true
     });
+    
 
     res.status(200).json({
         sucess: true,
