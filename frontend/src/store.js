@@ -7,6 +7,7 @@ import { cartReducer } from "./reducers/cartReducer";
 import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from "./reducers/orderReducer";
 
 
+
 const reducer = combineReducers({
     products: productsReducer,
     productDetails: productDetailsReducer,
@@ -28,11 +29,14 @@ const reducer = combineReducers({
     review: reviewReducer,
 });
 
+
+
 let initialState = {
     cart: {
         cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],// if localStorage is empty then initialState will be empty else it will have all the cartItems in cart in initialState
-
+        
         shippingInfo: localStorage.getItem("shippingInfo") ? JSON.parse(localStorage.getItem("shippingInfo")) : {},// if localStorage is empty then initialState will be empty else it will have all the shippingInfo in cart in initialState
+       
     },
 
 

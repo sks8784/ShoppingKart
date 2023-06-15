@@ -3,13 +3,17 @@ import axios from "axios";
 
 
 // Add to Cart Action
-export const addItemsToCart=(id,quantity)=>async(dispatch,getState)=>{
+export const addItemsToCart=(id, quantity)=>async(dispatch,getState)=>{
 
+        
         const {data}=await axios.get(`/api/v1/product/${id}`);
+        const user=getState().user.user;
+        
 
         dispatch({ 
             type:ADD_TO_CART, 
             payload:{
+                userID:user._id,
                 product:data.product._id,
                 name:data.product.name,
                 price:data.product.price,
@@ -25,10 +29,13 @@ export const addItemsToCart=(id,quantity)=>async(dispatch,getState)=>{
 
 
 // Remove from Cart Action
-export const removeItemsFromCart=(id)=>async(dispatch,getState)=>{
+export const removeItemsFromCart=(productID, userID)=>async(dispatch,getState)=>{
     dispatch({
         type:REMOVE_CART_ITEM,
-        payload:id,
+        payload:{
+            product:productID,
+            userID:userID,
+        },
     });
 
     localStorage.setItem("cartItems",JSON.stringify(getState().cart.cartItems));// getState helps to get the current state of cart

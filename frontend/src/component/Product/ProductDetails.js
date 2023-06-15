@@ -18,6 +18,7 @@ import {
 } from "@material-ui/core";
 import {Rating} from "@material-ui/lab";
 import { NEW_REVIEW_RESET } from '../../constants/productConstants';
+import { useNavigate } from 'react-router-dom';
 
 const ProductDetails = () => {
 
@@ -25,11 +26,14 @@ const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();
+  const navigate=useNavigate();
 
 
   const { product, loading, error } = useSelector((state) => state.productDetails);
 
   const {success, error: reviewError}=useSelector((state)=>state.newReview);
+
+  const {isAuthenticated}=useSelector((state)=>state.user);
 
   const options = {
     
@@ -61,8 +65,16 @@ const ProductDetails = () => {
   }
 
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(id, quantity));
-    alert.success("Item Added To Cart");
+
+      if(isAuthenticated){
+        dispatch(addItemsToCart(id, quantity));
+        alert.success("Item Added To Cart");
+      }
+      else{
+        navigate("/login");
+      }
+      
+    
   }
 
   const submitReviewToggle=()=>{

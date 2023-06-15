@@ -16,6 +16,14 @@ const UserOptions = ({ user }) => {
 
     const {cartItems}=useSelector((state)=>state.cart);
 
+    let length=0;
+    user && cartItems.forEach((item)=>{
+        if(user._id === item.userID){
+            length+=1;
+        }
+    })
+
+
     const [open, setOpen] = useState(false);
     const navigate=useNavigate();
     const alert=useAlert();
@@ -24,7 +32,7 @@ const UserOptions = ({ user }) => {
     const options = [
         { icon: <ListAltIcon />, name: "Orders", func: orders },
         { icon: <PersonIcon />, name: "Profile", func: account },
-        { icon: <ShoppingCartIcon style={{color:cartItems.length > 0 ? "tomato" : "unset"}}/>, name: `Cart(${cartItems.length})`, func: cart },
+        { icon: <ShoppingCartIcon style={{color:length > 0 ? "tomato" : "unset"}}/>, name: `Cart(${length})`, func: cart },
         { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
     ];
 
