@@ -36,8 +36,8 @@ const LoginSignUp = () => {
 
     const { name, email, password } = user;
 
-    const [avatar, setAvatar] = useState("/Profile.png");
-    const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+    const [avatar, setAvatar] = useState("https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=");
+    const [avatarPreview, setAvatarPreview] = useState("https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=");
 
 
     const loginSubmit = (e) => {
@@ -70,6 +70,7 @@ const LoginSignUp = () => {
                     setAvatar(reader.result);
                 }
             };
+            
             reader.readAsDataURL(e.target.files[0]);
         } else {
             setUser({ ...user, [e.target.name]: e.target.value });
@@ -77,7 +78,7 @@ const LoginSignUp = () => {
     }
 
     const redirect=location.search ? location.search.split("=")[1] : "/account"; //for this refer to the link inside checkouthandler func in Cart.js
-    console.log(redirect);
+    
 
     useEffect(() => {
         if (error) {
