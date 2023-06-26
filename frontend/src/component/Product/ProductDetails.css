@@ -34,6 +34,7 @@
 
 .CarouselImage{
     width:20vmax;
+    height: 27vmax;
     position: relative;
     left:10vmax;
     
@@ -107,7 +108,7 @@
     cursor: pointer;
     color:white;
     transition: all 0.5s;
-    background-color: tomato;
+    background-color:tomato;
     font: 500 0.7vmax "Roboto";
     border-radius: 20px;
     padding: 0.5vmax 2vmax;

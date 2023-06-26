@@ -75,6 +75,7 @@
     max-width: 100%;
 
 }
+
 .productCard{
     width:14vmax;
     display: flex;
@@ -88,6 +89,7 @@
 
 .productCard > img{
     width: 14vmax;
+    height: 18vmax;
 }
 
 .productCard > div{
